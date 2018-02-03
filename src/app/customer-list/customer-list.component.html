@@ -1,0 +1,16 @@
+<!-- it has three elements 
+  1. Add a customer
+  2. search a customer
+  3. Display customer name list with a hyperlink 
+-->
+<p>
+  <button class="btn btn-primary" (click)="onAdd()">Add</button>
+</p>
+<div class="panel panel-primary">
+  <input type="text" name="searchData" class="form-control" placeholder="Search" [(ngModel)]="searchData">
+</div>
+<div class="list-group">
+  <a [routerLink]="['/customers', customer.id]"  class="list-group-item" *ngFor="let customer of ( customers | async | searchBy : searchData)">
+    {{ customer?.name }}
+  </a>
+</div>
